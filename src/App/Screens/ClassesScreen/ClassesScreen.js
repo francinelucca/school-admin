@@ -3,7 +3,7 @@ import Lodash from 'lodash';
 
 
 import ClassesScreenComponent from '../../Components/ClassesScreenComponent';
-import Api, { SchoolApi } from '../../Core/Api';
+import Api from '../../Core/Api';
 
 
 class ClassesScreen extends React.Component {
@@ -25,6 +25,10 @@ class ClassesScreen extends React.Component {
             this.setState({
                 classes: data,
             })
+        })
+        .catch(objError => {
+            const message = Lodash.get(objError, ['response','data'], 'unexpected error occured');
+            alert(message);
         });
 
         this.getTeachers().then(objTeachersData => {
@@ -32,6 +36,10 @@ class ClassesScreen extends React.Component {
             this.setState({
                 teachers: data,
             })
+        })
+        .catch(objError => {
+            const message = Lodash.get(objError, ['response','data'], 'unexpected error occured');
+            alert(message);
         });
 
         this.getStudents().then(objStudentsData => {
@@ -39,6 +47,10 @@ class ClassesScreen extends React.Component {
             this.setState({
                 students: data,
             })
+        })
+        .catch(objError => {
+            const message = Lodash.get(objError, ['response','data'], 'unexpected error occured');
+            alert(message);
         });
 
 
@@ -57,14 +69,13 @@ class ClassesScreen extends React.Component {
 
 
     fetchClasses= () => {
-        return Api.GetClasses();
+        return Api.GetClasses()
     }
 
     onClassEdit= id => {
         this.getClass(id).then(objClassResponse => {
             const data = Lodash.get(objClassResponse, ['data'], []);
             const students = Lodash.get(data,['students'],[]);
-            console.log(data);
             this.setState(prevState => (
                 {
                 classObj: {...data, 
@@ -90,7 +101,11 @@ class ClassesScreen extends React.Component {
             this.setState({
                 classes: data,
             })
-        });
+        })
+        .catch(objError => {
+            const message = Lodash.get(objError, ['response','data'], 'unexpected error occured');
+            alert(message);
+        });;
     }
 
     onCreateClass= objClass => {
@@ -101,6 +116,10 @@ class ClassesScreen extends React.Component {
             students: !Lodash.isEmpty(objClass.students) ? objClass.students.map(c => c.id) : []
         }).then(obj =>
             this.refreshClassesData())
+            .catch(objError => {
+                const message = Lodash.get(objError, ['response','data'], 'unexpected error occured');
+                alert(message);
+            });
     }
 
     onEditClass= objClass => {
@@ -111,6 +130,10 @@ class ClassesScreen extends React.Component {
             students: !Lodash.isEmpty(objClass.students) ? objClass.students.map(c => c.id) : []
         }).then(obj =>
             this.refreshClassesData())
+            .catch(objError => {
+                const message = Lodash.get(objError, ['response','data'], 'unexpected error occured');
+                alert(message);
+            });
     }
 
     clearClassData= () => {

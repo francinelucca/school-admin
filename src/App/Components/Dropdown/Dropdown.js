@@ -23,7 +23,7 @@ class DropdownComponent extends React.Component {
         return (
             options.map(option => {
               return (
-                <Dropdown.Item eventKey={option}
+                <Dropdown.Item key={option.key} eventKey={option}
                 onClick={() => this.handleOnSelectItem(option)}>{option.label}</Dropdown.Item>
               )
             })

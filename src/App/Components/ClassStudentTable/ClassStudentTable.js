@@ -10,7 +10,7 @@ class ClassStudentTable extends React.Component {
 
         return !Lodash.isEmpty(enrolledStudents) ? enrolledStudents.map(r => {
             return (
-                <tr>
+                <tr key={r.id}>
                   <td>{r.id}</td>
                   <td>{r.firstName}</td>
                   <td>{r.lastName}</td>

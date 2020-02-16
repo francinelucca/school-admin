@@ -74,7 +74,7 @@ const Api = {
     EditStudent,
     DeleteStudent,
     GetTeachers,
-    GetTeachers,
+    GetTeacher,
     CreateTeacher,
     EditTeacher,
     DeleteTeacher,

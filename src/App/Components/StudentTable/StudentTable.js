@@ -1,22 +1,25 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
+import Moment from "moment";
 
-class ClassTable extends React.Component {
+class StudentTable extends React.Component {
 
     renderRows= () => {
-        const {rows, onEdit,onDeleteClass} = this.props;
+        const {rows, onEdit,onDeleteStudent} = this.props;
 
         return rows ? rows.map(r => {
+
             return (
                 <tr key={r.id}>
                   <td>{r.id}</td>
-                  <td>{r.name}</td>
-                  <td>{r.teacher.firstName } {r.teacher.lastName}</td>
-                  <td>{r.classroom || ''}</td>
+                  <td>{r.firstName } {r.lastName}</td>
+                  <td>{r.gender ==='F' ? 'Female' : 'Male'}</td>
+                  <td>{Moment(r.birthDay).format("MM-DD-YYYY")}</td>
+                  <td>{r.studentId}</td>
                   <td>
                       <Button variant="primary" onClick={() => onEdit(r.id)}>Edit</Button>
-                      <Button variant="danger" onClick={() => onDeleteClass(r.id)}>Delete</Button>
+                      <Button variant="danger" onClick={() => onDeleteStudent(r.id)}>Delete</Button>
                   </td>
                 </tr>
             )
@@ -31,8 +34,9 @@ class ClassTable extends React.Component {
           <tr>
             <th>#</th>
             <th>Name</th>
-            <th>Teacher</th>
-            <th>Class Room</th>
+            <th>Gender</th>
+            <th>Birthday</th>
+            <th>Student ID</th>
             <th>Options</th>
           </tr>
         </thead>
@@ -44,4 +48,4 @@ class ClassTable extends React.Component {
     }
 };
 
-export default ClassTable;
+export default StudentTable;

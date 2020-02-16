@@ -107,7 +107,7 @@ class ClassEdit extends React.Component {
                 students: 
                 [...prevState.values.students,student],
                 enrollableStudents:
-                prevState.values.enrollableStudents.filter(s => s.id!=student.id)
+                prevState.values.enrollableStudents.filter(s => s.id!==student.id)
             }
         }));
     }
@@ -119,7 +119,7 @@ class ClassEdit extends React.Component {
                 enrollableStudents: 
                 [...prevState.values.enrollableStudents,student],
                 students:
-                prevState.values.students.filter(s => s.id!=student.id)
+                prevState.values.students.filter(s => s.id!==student.id)
             }
         }));
     }
