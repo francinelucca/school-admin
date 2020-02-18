@@ -1,3 +1,5 @@
+React FrontEnd Project that connects to API to offer CRUD functionality for school entities: student, school, teacher
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
